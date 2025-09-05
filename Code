@@ -1,0 +1,104 @@
+<header>BIGGY MART</header> 
+<h2 class="section-title">🍉Fruits & Vegetables🥕</h2> 
+<div class="container"> 
+<div class="products"> 
+<div class="card"> 
+<img src="apple-1081105_640_-_Copy.webp" alt="Apple"> 
+<h3>Apple</h3> 
+<div class="price">₹50</div> 
+<button class="add" onclick="addToCart('Apple', 50)">Add</button> 
+<button class="remove" onclick="removeFromCart('Apple', 50)">Remove</button> 
+</div> 
+<div class="card"> 
+<img src="banana_-_Copy.jpg" alt="Banana"> 
+<h3>Banana</h3> 
+<div class="price">₹30</div> 
+<button class="add" onclick="addToCart('Banana', 30)">Add</button> 
+<button class="remove" onclick="removeFromCart('Banana', 30)">Remove</button> 
+</div> 
+<div class="card"> 
+<img src="wm.jpg" alt="Watermelon"> 
+<h3>Watermelon</h3> 
+<div class="price">₹40</div> 
+<button class="add" onclick="addToCart('Watermelon', 40)">Add</button> 
+<button class="remove" onclick="removeFromCart('Watermelon', 40)">Remove</button> 
+</div> 
+11 
+<div class="card"> 
+<img src="grapes.jpg" alt="Grapes"> 
+<h3>Grapes</h3> 
+<div class="price">₹60</div> 
+<button class="add" onclick="addToCart('Grapes', 60)">Add</button> 
+<button class="remove" onclick="removeFromCart('Grapes', 60)">Remove</button> 
+</div> 
+<div class="card"> 
+<img src="potato.jpg" alt="Potato"> 
+<h3>Potato</h3> 
+<div class="price">₹80</div> 
+<button class="add" onclick="addToCart('Potato', 80)">Add</button> 
+<button class="remove" onclick="removeFromCart('Potato', 80)">Remove</button> 
+</div> 
+<div class="card"> 
+<img src="corn.jpg" alt="Corn"> 
+<h3>Corn</h3> 
+<div class="price">₹90</div> 
+<button class="add" onclick="addToCart('Corn', 90)">Add</button> 
+<button class="remove" onclick="removeFromCart('Corn', 90)">Remove</button> 
+</div> 
+<div class="card"> 
+<img src="mush.jpg" alt="Mushroom"> 
+<h3>Mushroom</h3> 
+<div class="price">₹25</div> 
+<button class="add" onclick="addToCart('Mushroom', 25)">Add</button> 
+<button class="remove" onclick="removeFromCart('Mushroom', 25)">Remove</button> 
+12 
+</div> 
+<div class="card"> 
+<img src="carrot.jpg" alt="Carrot"> 
+<h3>Carrot</h3> 
+<div class="price">₹45</div> 
+<button class="add" onclick="addToCart('Carrot', 45)">Add</button> 
+<button class="remove" onclick="removeFromCart('Carrot', 45)">Remove</button> 
+</div> 
+</div> 
+<script> 
+let cart = {}; 
+function addToCart(name, price) { 
+if (!cart[name]) { 
+cart[name] = { qty: 0, price: price }; 
+} 
+cart[name].qty++; 
+updateCartDisplay(); 
+} 
+function removeFromCart(name, price) { 
+if (cart[name]) { 
+cart[name].qty--; 
+if (cart[name].qty <= 0) { 
+delete cart[name]; 
+} 
+updateCartDisplay(); 
+} 
+} 
+13 
+function updateCartDisplay() { 
+let cartCount = 0; 
+let cartTotal = 0; 
+let cartListHTML = ""; 
+for (let item in cart) { 
+cartCount += cart[item].qty; 
+cartTotal += cart[item].qty * cart[item].price; 
+cartListHTML += `• ${cart[item].qty} × ${item}<br>`; 
+} 
+document.getElementById("cart-count").innerText = cartCount; 
+document.getElementById("cart-total").innerText = cartTotal; 
+document.getElementById("cart-items").innerHTML = 
+cartCount === 0 ? "<em>No items yet</em>" : cartListHTML; 
+document.getElementById("payment-btn").style.display = 
+cartCount > 0 ? "block" : "none"; 
+} 
+function goToPayment() { 
+window.location.href = "payment.html"; 
+} 
+</script> 
+</body> 
+</html>
